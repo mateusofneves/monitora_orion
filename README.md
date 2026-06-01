@@ -2,11 +2,11 @@
 
 ## Sobre o Projeto
 
-Este projeto foi desenvolvido com o objetivo de monitorar grandezas físicas críticas para o correto funcionamento da cápsula espacial Órion, utilizando conceitos de Internet das Coisas (IoT) e sistemas embarcados.
+Este projeto simula um sistema de monitoramento para a cápsula espacial Órion utilizando conceitos de Internet das Coisas (IoT) e sistemas embarcados.
 
-A solução foi implementada na plataforma de simulação Wokwi utilizando um microcontrolador ESP32, sensores para aquisição de dados e um display OLED para visualização em tempo real das informações coletadas.
+A solução foi desenvolvida na plataforma Wokwi com um microcontrolador ESP32 responsável pela aquisição, processamento e exibição de dados em tempo real.
 
-O sistema realiza o monitoramento contínuo de:
+O sistema monitora continuamente três grandezas físicas consideradas críticas para o funcionamento da cápsula:
 
 * Temperatura
 * Luminosidade
@@ -14,17 +14,42 @@ O sistema realiza o monitoramento contínuo de:
 
 ---
 
-## Objetivos
+## Estrutura do Projeto
 
-* Monitorar as condições ambientais da cápsula Órion.
-* Realizar a aquisição de dados através de sensores.
-* Processar as informações coletadas pelo ESP32.
-* Exibir os resultados em tempo real em um display OLED.
-* Simular uma aplicação de IoT voltada ao contexto aeroespacial.
+```text
+monitoramento-capsula-orion/
+│
+├── assets/
+│   ├── circuito_orion.jpeg
+│   ├── oled_funcionando.jpeg
+│   └── simulacao.jpeg
+│
+├── codigo/
+│   ├── diagram.json
+│   └── monitora_orion.ino
+│
+└── README.md
+```
 
 ---
 
-## 🛠️ Componentes Utilizados
+## Imagens do Projeto
+
+### Circuito no Wokwi
+
+![Circuito](assets/circuito_orion.jpeg)
+
+### Display OLED em Funcionamento
+
+![OLED](assets/oled_funcionando.jpeg)
+
+### Simulação Completa
+
+![Simulação](assets/simulacao.jpeg)
+
+---
+
+## Componentes Utilizados
 
 | Componente                   | Quantidade |
 | ---------------------------- | ---------- |
@@ -36,54 +61,46 @@ O sistema realiza o monitoramento contínuo de:
 
 ---
 
-## Ligações
+## Configuração dos Pinos
 
-### DHT22
+| Componente                  | Pino ESP32 |
+| --------------------------- | ---------- |
+| DHT22 (DATA)                | GPIO15     |
+| Sensor de Luminosidade (AO) | GPIO34     |
+| Potenciômetro (SIG)         | GPIO35     |
+| OLED SDA                    | GPIO21     |
+| OLED SCL                    | GPIO22     |
 
-| DHT22 | ESP32  |
-| ----- | ------ |
-| VCC   | 3V3    |
-| DATA  | GPIO15 |
-| GND   | GND    |
-
-### Sensor de Luminosidade
-
-| Sensor LDR | ESP32  |
-| ---------- | ------ |
-| VCC        | 3V3    |
-| GND        | GND    |
-| AO         | GPIO34 |
-
-### Potenciômetro
-
-| Potenciômetro | ESP32  |
-| ------------- | ------ |
-| VCC           | 3V3    |
-| GND           | GND    |
-| SIG           | GPIO35 |
-
-### Display OLED
-
-| OLED SSD1306 | ESP32  |
-| ------------ | ------ |
-| VCC          | 3V3    |
-| GND          | GND    |
-| SDA          | GPIO21 |
-| SCL          | GPIO22 |
+Todos os componentes foram alimentados com 3.3V e conectados ao GND comum do ESP32.
 
 ---
 
 ## Funcionamento
 
-O ESP32 realiza a leitura contínua dos sensores conectados ao sistema.
+O ESP32 realiza leituras contínuas dos sensores conectados ao sistema.
 
-* O DHT22 fornece os valores de temperatura.
-* O sensor LDR mede a intensidade luminosa do ambiente.
-* O potenciômetro simula a leitura de corrente elétrica da cápsula.
+Os valores coletados são processados e exibidos em tempo real no display OLED, permitindo o monitoramento das condições operacionais da cápsula Órion.
 
-Após a aquisição dos dados, o microcontrolador processa as informações e exibe os resultados no display OLED.
+As variáveis monitoradas são:
 
-O sistema também verifica limites pré-definidos para identificar situações de alerta, permitindo o acompanhamento das condições operacionais da cápsula em tempo real.
+* Temperatura interna da cápsula;
+* Intensidade luminosa do ambiente;
+* Corrente elétrica simulada.
+
+Além da exibição dos valores, o sistema avalia limites operacionais pré-definidos e informa se a cápsula está operando dentro das condições esperadas.
+
+---
+
+## Resultados Obtidos
+
+O sistema foi capaz de:
+
+* Monitorar temperatura em tempo real utilizando o sensor DHT22;
+* Medir a intensidade luminosa através do módulo LDR;
+* Simular leituras de corrente elétrica utilizando um potenciômetro;
+* Exibir todas as informações em um display OLED SSD1306;
+* Processar os dados continuamente utilizando o ESP32;
+* Simular um cenário de monitoramento aplicado ao contexto aeroespacial.
 
 ---
 
@@ -111,10 +128,12 @@ O sistema também verifica limites pré-definidos para identificar situações d
 
 ## Autores
 
-| NOME                                  | RM     |
-| ------------------------------------  | ------ |
+| Nome                                  | RM     |
+| ------------------------------------- | ------ |
 | Mateus de Oliveira Fernandes Neves    | 572431 |
 | Marcelo do Nascimento Batista Pereira | 569410 |
 | Nathan Hiroshi Watanabe               | 572806 |
+
+---
 
 Projeto desenvolvido para fins acadêmicos, demonstrando a integração entre sensores, sistema embarcado e interface de visualização para monitoramento da cápsula Órion.
