@@ -14,6 +14,14 @@ O sistema monitora continuamente três grandezas físicas consideradas críticas
 
 ---
 
+## Simulação Online
+
+🔗 Acesse o projeto no Wokwi:
+
+https://wokwi.com/projects/465633087304446977
+
+---
+
 ## Estrutura do Projeto
 
 ```text
